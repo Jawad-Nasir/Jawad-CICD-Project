@@ -1,9 +1,9 @@
 pipeline {
-	 agent any
+	agent any
 
-       	 tools {
-		 nodejs 'Node26'
-	 }
+       	tools {
+		nodejs 'Node26'
+	}
 
  	stages {
 		 stage('Checkout') {
@@ -25,7 +25,8 @@ pipeline {
 		 }
 		 stage('Deploy') {
 			 steps {
-				 sh 'docker build -t jenkins-demo .'
+				 sh 'docker build -t jenkins-pipeline .'
+				 sh 'docker run -d -p 3000:3000 jenkins-pipeline'
 				 echo 'Deployed!'
 			 }
 		 }
