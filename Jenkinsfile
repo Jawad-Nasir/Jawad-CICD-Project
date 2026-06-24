@@ -31,7 +31,8 @@ pipeline {
 				withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
 				usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
 					sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
-					sh 'docker push $DOCKER_IMAGE:$IMAGE_TAG'									sh 'docker push $DOCKER_IMAGE:latest'
+					sh 'docker push $DOCKER_IMAGE:$IMAGE_TAG'
+					sh 'docker push $DOCKER_IMAGE:latest'
 				}
 			}
 		}
